@@ -9,9 +9,15 @@ window.onload = function() {
   const fov = 60;
   const camera = {
     x: parseInt(map[0].length / 2) * cellSize + cellSize / 2,
-    y: 14 * cellSize + cellSize / 2,
+    y: parseInt(map[0].length / 2) * cellSize + cellSize / 2,
     rotation: 0,
     angle: toRadian(-90),
+    speedX : 0,
+    speedY : 0,
+    newPos : function(){
+      this.x += this.speedX;
+        this.y += this.speedY; 
+    },
     update: function() {
       this.rotation *= 0.5;
       this.angle += this.rotation;
@@ -114,11 +120,40 @@ window.onload = function() {
   };
 
   document.body.onkeydown = function(e) {
+    camera.speedX = 0;
+    camera.speedY = 0; 
+    
+    if (e.keyCode === 65){
+      //camera.rotation -= 0.1
+      camera.speedX = -1;
+      camera.newPos();
+    }
+    else
+    if (e.keyCode === 68){
+      camera.speedX = 1;
+      camera.newPos();
+    }
+    else 
+    if(e.keyCode === 87){
+      //console.log("keypress worked");
+      camera.speedY = -1;
+      camera.newPos();
+    }
+    else 
+    if(e.keyCode === 83){
+     // console.log("keypress worked");
+      camera.speedY = 1;
+      camera.newPos();
+    }
+
+    else
     if (e.keyCode === 37)
       camera.rotation -= 0.1
     else
     if (e.keyCode === 39)
       camera.rotation += 0.1
+  
+   
   };
 
   canvas.onmousemove = function(e) {
