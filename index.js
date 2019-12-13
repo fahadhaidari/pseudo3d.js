@@ -18,11 +18,11 @@ window.onload = function() {
     }
   };
   const colorMap = {
-    1: 'orange',
-    2: 'green',
-    3: 'red',
-    4: 'yellow',
-    5: '#4488FF'
+    1: "orange",
+    2: "green",
+    3: "red",
+    4: "yellow",
+    5: "#4488FF"
   };
   const sceneData = [];
 
@@ -32,16 +32,16 @@ window.onload = function() {
   scene.width = 820;
   scene.height = 460;
 
-  scene.style.background = '#111111'
-  scene.style.border = 'solid 2px white'
+  scene.style.background = "#111111";
+  scene.style.border = "solid 2px white";
 
   const drawMap = function(matrix) {
     for (let y = 0; y < matrix.length; y ++) {
       for (let x = 0; x < matrix[y].length; x ++) {
         if (matrix[y][x] > 0 && matrix[y][x] < Object.keys(colorMap).length) {
           const color = colorMap[matrix[y][x]];
-          
-          rect(context, x * cellSize, y * cellSize, cellSize, cellSize, color, 'stroke');
+
+          rect(context, x * cellSize, y * cellSize, cellSize, cellSize, color, "stroke");
         }
       }
     }
@@ -86,7 +86,7 @@ window.onload = function() {
     }
 
     const w = parseInt(scene.width / sceneData.length);
-  
+
     for (let i = 0; i < sceneData.length; i ++) {
       const h = sceneData[i].h;
       const alpha = h / 200;
